@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs'); %> 
+
+    <!-- <link rel="preload" as="image" href="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912238/pano_ygatwa.webp">
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912245/pano4_js5tpp.webp">
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912238/pano3_umyftr.webp">
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912238/pano2_cod7we.webp">
+    <link rel="preload" as="image" href="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912243/pano5_yqprop.webp"> -->
+    
+</head>
+<body>
+
+    <button onclick="topFunction()" class="topBtn" title="UP">TOP</button>
+
+    <%- include('../partials/nav.ejs'); %> 
+
+    <section id="start">
+        <div class="container">
+            <div class="menu-icon">
+              <span class="line-1"></span>
+              <span class="line-2"></span>
+              <span class="line-3"></span>
+            </div>
+          </div>
+        <div class="title-container" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+            <div style="z-index: 100;">
+                <h1 class="main-title">Wel<span style="color: white;">cum</span>e</h1>
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <article class="about">
+            <div class="about-container">
+                <div style="float: left; width: 50%;">
+                    <div class="blog-line"></div>
+                    <h1 class="about-title">Yannic Haas</h1>
+                    <div class="about-text">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus suscipit ipsum alias molestias soluta distinctio a excepturi, deleniti voluptate eligendi facere officiis quibusdam praesentium numquam at quidem illo voluptatum blanditiis!</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="img">
+            <div>
+            </div>
+        </article>
+    </section>
+    <%- include('../partials/footer') %> 
+    <script>
+        AOS.init();
+      </script>
+</body>
+<script src="js/main.js"></script>
+</html>

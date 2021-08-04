@@ -1,0 +1,15 @@
+<div class="navigation">
+
+    <% for ( let i in menu ) { %>
+        <% if (menu[i].url == url ) { %>
+            <div class="nav-links">
+                <a class="activelink" class="links" href="<%= menu[i].url %>" ><%= menu[i].name %></a>
+            </div>
+
+        <% } else { %>
+            <div class="nav-links">
+                <a class="links" href="<%= menu[i].url %>" ><%= menu[i].name %></a>
+            </div>
+        <% } %>
+    <% } %>
+</div>
