@@ -1,35 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('../partials/head.ejs'); %> 
-    <!-- <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHOTOS</title>
-    <link rel="icon" type="image/png" href="images/mini_logo.png" size="200x94">
-    <link rel="stylesheet" href="css/dist/main.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link rel="preload" as="image" href="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912238/pano_ygatwa.webp">
-    <link rel="preload" as="image" href="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912245/pano4_js5tpp.webp">
-    <link rel="preload" as="image" href="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912238/pano3_umyftr.webp">
-    <link rel="preload" as="image" href="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912238/pano2_cod7we.webp">
-    <link rel="preload" as="image" href="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912243/pano5_yqprop.webp"> -->
+    
+    <%- include('../partials/head'); %>
+
 </head>
 <body>
 
     <button onclick="topFunction()" class="topBtn" title="UP">TOP</button>
     
-    <%- include('../partials/nav.ejs'); %> 
+    <%- include('../partials/nav'); %>
 
     <section id="photo-start">
-        <div class="container">
-            <div class="menu-icon">
-              <span class="line-1"></span>
-              <span class="line-2"></span>
-              <span class="line-3"></span>
-            </div>
-          </div>
+
+      <%- include('../partials/burger'); %>
+
         <div class="title-container" data-aos="fade-up"
         data-aos-anchor-placement="top-bottom">
             <div style="z-index: 100;">
@@ -41,14 +26,16 @@
       <!-- <button class="gallery-btn" id="right" onclick="GoRight()"></button>
       <button class="gallery-btn" id="left" onclick="GoLeft()"></button> -->
         <div class="gallery-container">
-            <img class="slideImg" src="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912238/pano_ygatwa.webp" alt="pano">
-            <img class="slideImg" src="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912238/pano2_cod7we.webp" alt="pano2">
-            <img class="slideImg" src="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912245/pano4_js5tpp.webp" alt="pano4">
-            <img class="slideImg" src="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912243/pano5_yqprop.webp" alt="pano5">
-            <img class="slideImg" src="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912238/pano3_umyftr.webp" alt="pano3">
+            <img class="slideImg" src="https://res.cloudinary.com/dodxyoerw/image/upload/c_scale,q_100,w_2500/v1623912238/pano_ygatwa.webp" alt="pano">
+            <img class="slideImg" src="https://res.cloudinary.com/dodxyoerw/image/upload/c_scale,q_100,w_2500/v1623912238/pano2_cod7we.webp" alt="pano2">
+            <img class="slideImg" src="https://res.cloudinary.com/dodxyoerw/image/upload/c_scale,q_100,w_2500/v1623912245/pano4_js5tpp.webp" alt="pano4">
+            <img class="slideImg" src="https://res.cloudinary.com/dodxyoerw/image/upload/c_scale,q_100,w_2500/v1623912243/pano5_yqprop.webp" alt="pano5">
+            <img class="slideImg" src="https://res.cloudinary.com/dodxyoerw/image/upload/c_scale,q_100,w_2500/v1623912238/pano3_umyftr.webp" alt="pano3">
         </div>
     </section>
-    <%- include('../partials/footer') %> 
+
+    <%- include('../partials/footer'); %>
+
     <script>
         AOS.init();
       </script>

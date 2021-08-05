@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <%- include('../partials/head'); %>
+
+</head>
+<body>
+
+    <button onclick="topFunction()" class="topBtn" title="UP">TOP</button>
+
+    <%- include('../partials/nav'); %>
+
+    <section id="start">
+
+        <%- include('../partials/burger'); %> 
+
+        <div class="title-container" data-aos="fade-up"
+        data-aos-anchor-placement="top-bottom">
+            <div style="z-index: 100;">
+                <h1 class="main-title">Videos</h1>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div style="display: flex; justify-content: center; width: 100%;">
+            <video autoplay muted loop class="m4-video">
+                <source src="videos/m4.webm" type="video/webm">
+                Your browser does not support the video tag.
+              </video>
+        </div>
+    </section>
+
+    <%- include('../partials/footer'); %>
+
+    <script>
+        AOS.init();
+      </script>
+</body>
+<script src="js/main.js"></script>
+</html>

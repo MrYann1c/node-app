@@ -1,32 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('../partials/head.ejs'); %> 
-
-    <!-- <link rel="preload" as="image" href="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912238/pano_ygatwa.webp">
-    <link rel="preload" as="image" href="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912245/pano4_js5tpp.webp">
-    <link rel="preload" as="image" href="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912238/pano3_umyftr.webp">
-    <link rel="preload" as="image" href="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912238/pano2_cod7we.webp">
-    <link rel="preload" as="image" href="https://res.cloudinary.com/dodxyoerw/image/upload/v1623912243/pano5_yqprop.webp"> -->
     
+    <%- include('../partials/head'); %>
+
 </head>
 <body>
 
     <button onclick="topFunction()" class="topBtn" title="UP">TOP</button>
 
-    <%- include('../partials/nav.ejs'); %> 
+    <%- include('../partials/nav'); %> 
 
     <section id="start">
-        <div class="container">
-            <div class="menu-icon">
-              <span class="line-1"></span>
-              <span class="line-2"></span>
-              <span class="line-3"></span>
-            </div>
-          </div>
+
+        <%- include('../partials/burger'); %>
+
         <div class="title-container" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
             <div style="z-index: 100;">
-                <h1 class="main-title">Wel<span style="color: white;">cum</span>e</h1>
+                <h1 class="main-title">Welcome</h1>
             </div>
         </div>
     </section>
@@ -47,7 +38,7 @@
             </div>
         </article>
     </section>
-    <%- include('../partials/footer') %> 
+    <%- include('../partials/footer'); %> 
     <script>
         AOS.init();
       </script>
