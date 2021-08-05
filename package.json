@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "animejs": "^3.2.1",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "ejs": "^3.1.6",

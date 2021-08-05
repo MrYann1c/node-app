@@ -1,12 +1,26 @@
 // -- Node/ExpressJS Application File --
 // Variables
 const compression = require('compression');
+const fs = require('fs');
+const http = require('http');
+const https = require('https');
 const express = require('express');
 const bp = require('body-parser');
 const port = 80;
 const app = express();
 const blog = require('./blog.js');
 const { request } = require('express');
+
+// Certificate
+const privateKey = fs.readFileSync('/home/yannic/certs/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('/home/yannic/certs/cert.pem', 'utf8');
+const ca = fs.readFileSync('/home/yannic/certs/chain.pem', 'utf8');
+
+const credentials = {
+	key: privateKey,
+	cert: certificate,
+	ca: ca
+};
 
 // Menu Variables for Navigation
 const menu = [
@@ -44,6 +58,7 @@ app.use(express.static(__dirname + "/static"));
 
 // -- Homepage --
 app.get("/", (req, res) => {
+    //res.redirect('https://' + req.headers.host + req.url);
 
 	// Get url (relative Path)
 	var urls = require('url');
@@ -59,7 +74,7 @@ app.get("/", (req, res) => {
 		url: q.pathname,
 		menu: menu
 	}
-	
+
 	// Render Page
 	res.render('pages/index', data);
 });
@@ -108,7 +123,15 @@ app.get("/videos", (req, res) => {
 	res.render('pages/videos', data);
 });
 
-// Success Log
-app.listen(port, () => {
-	console.log("Express server listening on port " + port);
+
+
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer(credentials, app);
+
+httpServer.listen(80, () => {
+	console.log('HTTP Server running on port 80');
+});
+
+httpsServer.listen(443, () => {
+	console.log('HTTPS Server running on port 443');
 });
