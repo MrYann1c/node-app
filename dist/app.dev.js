@@ -21,11 +21,11 @@ var blog = require('./blog.js');
 
 var _require = require('express'),
     request = _require.request; // Certificate
+// const privateKey = fs.readFileSync('/home/yannic/certs/privkey.pem', 'utf8');
+// const certificate = fs.readFileSync('/home/yannic/certs/cert.pem', 'utf8');
+// const ca = fs.readFileSync('/home/yannic/certs/chain.pem', 'utf8');
 
 
-var privateKey = fs.readFileSync('/home/yannic/certs/privkey.pem', 'utf8');
-var certificate = fs.readFileSync('/home/yannic/certs/cert.pem', 'utf8');
-var ca = fs.readFileSync('/home/yannic/certs/chain.pem', 'utf8');
 var credentials = {
   key: privateKey,
   cert: certificate,
@@ -61,7 +61,6 @@ app.use(express["static"](__dirname + "/static")); // Pages | Routes
 // -- Homepage --
 
 app.get("/", function (req, res) {
-  //res.redirect('https://' + req.headers.host + req.url);
   // Get url (relative Path)
   var urls = require('url');
 
@@ -114,11 +113,10 @@ app.get("/videos", function (req, res) {
 
   res.render('pages/videos', data);
 });
-var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
-httpServer.listen(80, function () {
-  console.log('HTTP Server running on port 80');
-});
-httpsServer.listen(443, function () {
-  console.log('HTTPS Server running on port 443');
-});
+var httpServer = http.createServer(app); // const httpsServer = https.createServer(credentials, app);
+
+httpServer.listen(3000, function () {
+  console.log('HTTP Server running on port 3000');
+}); // httpsServer.listen(3001, () => {
+// 	console.log('HTTPS Server running on port 3001');
+// });

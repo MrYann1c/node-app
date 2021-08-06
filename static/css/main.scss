@@ -37,6 +37,7 @@ body {
 @media screen and (max-width: 600px) {
     .container { top: 1.7em; left: 1.7em; }
 }
+
 .menu-icon {
     display: grid;
     place-items: center;
@@ -180,6 +181,9 @@ section {
     scroll-behavior: smooth;
 
     &:nth-of-type(1) {
+        // background-image: url('https://res.cloudinary.com/dodxyoerw/image/upload/c_scale,q_100,w_2500/v1623912245/pano4_js5tpp.webp');
+        // background-position: center;
+        // background-size: cover;
         background-color: #111A23;
         height: 80vh;
         // scroll-snap-align: start;
@@ -230,8 +234,8 @@ section {
 }
 
 .circle {
-    height: 50px;
-    width: 50px;
+    height: 5vw;
+    width: 10%;
     border-radius: 50%;
     background-color: wheat;
     display: flex;
@@ -296,11 +300,32 @@ section {
 // MEDIA
 @media screen and (max-width: 970px){
     .main-title {
-        font-size: 15vw;
+        font-size: 10vw;
     }
     .about-title {
         font-size: 8vw;
         width: 50vw;
+    }
+    .about-text > p {
+        font-size: 3vw;
+    }
+    .about-text {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 600px){
+    .main-title {
+        font-size: 14vw;
+    }
+    .about-title {
+        font-size: 9vw;
+        width: 70vw;
+    }
+    .about-text > p {
+        font-size: 5vw;
+    }
+    .about-text {
+        width: 70vw;
     }
 }
 /* Responsive layout - makes a two column-layout instead of four columns */

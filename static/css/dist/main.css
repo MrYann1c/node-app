@@ -250,8 +250,8 @@ section:nth-of-type(4) {
   }
 }
 .circle {
-  height: 50px;
-  width: 50px;
+  height: 5vw;
+  width: 10%;
   border-radius: 50%;
   background-color: wheat;
   display: flex;
@@ -315,12 +315,38 @@ section:nth-of-type(4) {
 
 @media screen and (max-width: 970px) {
   .main-title {
-    font-size: 15vw;
+    font-size: 10vw;
   }
 
   .about-title {
     font-size: 8vw;
     width: 50vw;
+  }
+
+  .about-text > p {
+    font-size: 3vw;
+  }
+
+  .about-text {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .main-title {
+    font-size: 14vw;
+  }
+
+  .about-title {
+    font-size: 9vw;
+    width: 70vw;
+  }
+
+  .about-text > p {
+    font-size: 5vw;
+  }
+
+  .about-text {
+    width: 70vw;
   }
 }
 /* Responsive layout - makes a two column-layout instead of four columns */
