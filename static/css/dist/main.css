@@ -37,6 +37,10 @@ body {
   justify-content: center;
 }
 
+.fixed {
+  position: fixed;
+}
+
 @media screen and (max-width: 600px) {
   .container {
     top: 1.7em;
@@ -54,7 +58,7 @@ body {
 .menu-icon > span {
   width: 50px;
   height: 3px;
-  background: wheat;
+  background: #FFBE53;
   display: block;
   transition: all 0.3s ease-in-out;
 }
@@ -89,7 +93,7 @@ body {
 
 .activelink {
   text-decoration-line: line-through;
-  color: wheat;
+  color: #FFBE53;
   position: relative;
   font-size: 2.5em;
   text-transform: uppercase;
@@ -139,7 +143,7 @@ body {
 }
 
 .nav-links > a:hover {
-  color: wheat;
+  color: #FFBE53;
 }
 
 .topBtn {
@@ -151,7 +155,7 @@ body {
   font-size: 18px;
   border: none;
   outline: none;
-  background-color: wheat;
+  background-color: #FFBE53;
   color: #111A23;
   cursor: pointer;
   padding: 15px;
@@ -214,10 +218,80 @@ section:nth-of-type(4) {
 }
 
 #pano-sec {
-  height: 80vh;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.slider {
+  width: 1200px;
+  height: 500px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.slides {
+  width: 100%;
+  height: 500px;
+  display: flex;
+}
+
+.slides input {
+  display: none;
+}
+
+.slide {
+  width: 100%;
+  transition: 700ms;
+}
+
+.slide img {
+  width: 1200px;
+  height: 500px;
+}
+
+.navigation-manual {
+  position: absolute;
+  display: flex;
+  margin-top: -50px;
+  width: 1200px;
+  justify-content: center;
+}
+
+.manual-btn {
+  border: 2px solid #FFBE53;
+  padding: 5px;
+  cursor: pointer;
+  transition: 500ms;
+}
+
+.manual-btn:not(:last-child) {
+  margin-right: 40px;
+}
+
+.manual-btn:hover {
+  background: #FFBE53;
+}
+
+#radio1:checked ~ .first {
+  margin-left: 0;
+}
+
+#radio2:checked ~ .first {
+  margin-left: -100%;
+}
+
+#radio3:checked ~ .first {
+  margin-left: -200%;
+}
+
+#radio4:checked ~ .first {
+  margin-left: -300%;
+}
+
+#radio5:checked ~ .first {
+  margin-left: -400%;
 }
 
 #blog-start {
@@ -229,10 +303,6 @@ section:nth-of-type(4) {
 }
 
 @media screen and (max-width: 1100px) {
-  #pano-sec {
-    height: 20vh;
-  }
-
   #photo-start {
     height: 60vh;
   }
@@ -244,16 +314,12 @@ section:nth-of-type(4) {
   #blog-sec {
     height: auto;
   }
-
-  .gallery-container::-webkit-scrollbar {
-    display: none;
-  }
 }
 .circle {
   height: 5vw;
   width: 10%;
   border-radius: 50%;
-  background-color: wheat;
+  background-color: #FFBE53;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -272,7 +338,7 @@ section:nth-of-type(4) {
   margin: 0;
   font-size: 5vw;
   text-transform: uppercase;
-  color: wheat;
+  color: #FFBE53;
   cursor: pointer;
   text-shadow: 0 1px 0 #CCCCCC, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
 }
@@ -299,7 +365,7 @@ section:nth-of-type(4) {
 .about-title {
   margin: 0 0 0 0;
   width: 100%;
-  color: wheat;
+  color: #FFBE53;
   font-size: 3vw;
 }
 
@@ -310,13 +376,6 @@ section:nth-of-type(4) {
 .about-text > p {
   color: white;
   font-size: 1.5vw;
-}
-
-.img > div {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  margin-left: 5em;
 }
 
 @media screen and (max-width: 970px) {
@@ -412,86 +471,15 @@ section:nth-of-type(4) {
 
 .footer-links {
   display: block;
-  color: wheat;
+  color: #FFBE53;
   text-decoration: none;
   text-transform: uppercase;
 }
 
 .footer-middle {
-  color: wheat;
+  color: #FFBE53;
   padding-left: 10px;
   padding-right: 10px;
-}
-
-.gallery-container {
-  width: 100%;
-  height: auto;
-  overflow-x: auto;
-  overflow-y: scroll;
-  -webkit-overflow-x: auto;
-  -webkit-overflow-y: scroll;
-  scroll-snap-type: x mandatory;
-  -webkit-scroll-snap-type: x mandatory;
-  white-space: nowrap;
-}
-
-.gallery-container::-webkit-scrollbar {
-  display: block;
-  width: 100%;
-  height: 1.7em;
-}
-
-.gallery-container::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-}
-
-/* Handle */
-.gallery-container::-webkit-scrollbar-thumb {
-  background-color: wheat;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-  cursor: grab;
-  transition: all 2s;
-}
-
-.gallery-container::-webkit-scrollbar-thumb:window-inactive {
-  background: rgba(255, 0, 0, 0.4);
-}
-
-@media screen and (max-width: 1100px) {
-  .gallery-container::-webkit-scrollbar {
-    display: none;
-  }
-}
-.gallery-container > img {
-  cursor: grab;
-  max-width: 75%;
-  height: auto;
-  scroll-snap-align: none center;
-  -webkit-scroll-snap-align: none center;
-  transition: all 0.2s;
-}
-
-@media screen and (max-width: 900px) {
-  .gallery-container > img {
-    max-width: 95%;
-  }
-}
-.gallery-btn {
-  position: absolute;
-  z-index: 1000;
-  width: 50px;
-  height: 50px;
-  background-color: wheat;
-}
-
-#right {
-  right: 5em;
-}
-
-#left {
-  left: 5em;
 }
 
 .blog-summary-wrap {
@@ -607,9 +595,9 @@ ul {
 }
 .m4-video {
   width: 75%;
-  -webkit-box-shadow: 20px 20px 0px 1px wheat;
-  -moz-box-shadow: 20px 20px 0px 1px wheat;
-  box-shadow: 20px 20px 0px 1px wheat;
+  -webkit-box-shadow: 20px 20px 0px 1px #FFBE53;
+  -moz-box-shadow: 20px 20px 0px 1px #FFBE53;
+  box-shadow: 20px 20px 0px 1px #FFBE53;
 }
 
 .code-text {
@@ -640,10 +628,10 @@ pre code {
   width: 100%;
   height: 100vh;
   position: absolute;
-  background-color: wheat;
+  background-color: #FFBE53;
   z-index: 1000;
   border-radius: 0;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }
@@ -654,4 +642,73 @@ pre code {
   font-size: 5vw;
   text-transform: uppercase;
   visibility: hidden;
+}
+
+/* ----------- Non-Retina Screens ----------- */
+/* ----------- Retina Screens ----------- */
+/* ----------- iPad 1, 2, Mini and Air ----------- */
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .slider {
+    width: 768px;
+    height: auto;
+  }
+
+  .slide img {
+    width: 768px;
+    height: auto;
+  }
+
+  .navigation-manual {
+    width: 768px;
+  }
+}
+/* ----------- iPhone X ----------- */
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+  .slider {
+    width: 350px;
+    height: 150px;
+  }
+
+  .slide img {
+    width: 350px;
+    height: 150px;
+  }
+
+  .navigation-manual {
+    width: 350px;
+  }
+}
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  .slider {
+    width: 350px;
+    height: 150px;
+  }
+
+  .slide img {
+    width: 350px;
+    height: 150px;
+  }
+
+  .navigation-manual {
+    width: 350px;
+  }
+}
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+  .slider {
+    width: 768px;
+    height: auto;
+  }
+
+  .slide img {
+    width: 768px;
+    height: auto;
+  }
+
+  .navigation-manual {
+    width: 768px;
+  }
 }

@@ -22,27 +22,43 @@
 //     loop: true
 // });
 
-var textWrapper = document.querySelector('.load-text');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-textWrapper.style.visibility = 'visible';
+window.onload = function () {
+  if (localStorage.getItem("hasCodeRunBefore") === null) {
+      var textWrapper = document.querySelector('.load-text');
+      textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+      textWrapper.style.visibility = 'visible';
+      
+      let loading = anime.timeline({
+        autoplay: true,
+        begin: function() {
+          document.querySelector('.loading').style.display = 'flex';
 
-let loading = anime.timeline({
-  autoplay: true,
-}).add({
-  display: 'block',
-  targets: '.load-text .letter',
-  opacity: [0,1],
-  easing: "easeInOutQuad",
-  duration: 1500,
-  delay: (el, i) => 50 * (i+1)
-}).add({
-  targets: '.load-text',
-  opacity: 0,
-  duration: 800,
-  easing: "easeOutExpo",
-  delay: 700
-}).add ({
-  targets: '.loading',
-  duration: 2000,
-  opacity: 0,
-});
+        },
+      }).add({
+        targets: '.loading',
+        opacity: [0,1],
+        easing: "easeInOutQuad",
+        duration: 1500,
+        delay: (el, i) => 50 * (i+1)
+      }).add({
+        display: 'block',
+        targets: '.load-text .letter',
+        opacity: [0,1],
+        easing: "easeInOutQuad",
+        duration: 1500,
+        delay: (el, i) => 50 * (i+1)
+      }).add({
+        targets: '.load-text',
+        opacity: 0,
+        duration: 800,
+        easing: "easeOutExpo",
+        delay: 700
+      }).add ({
+        targets: '.loading',
+        duration: 2000,
+        opacity: 0,
+      }); 
+      localStorage.setItem("hasCodeRunBefore", true);
+  }
+}
+

@@ -16,20 +16,20 @@ const { request } = require('express');
 // const certificate = fs.readFileSync('/home/yannic/certs/cert.pem', 'utf8');
 // const ca = fs.readFileSync('/home/yannic/certs/chain.pem', 'utf8');
 
-const credentials = {
-	key: privateKey,
-	cert: certificate,
-	ca: ca
-};
+// const credentials = {
+// 	key: privateKey,
+// 	cert: certificate,
+// 	ca: ca
+// };
 
-// Menu Variables for Navigation
+// Array Variables
 const menu = [
 	{
 		name: 'Home',
 		url: '/'
 	},
 	{
-		name: 'Photos',
+		name: 'Photography',
 		url: '/photos'
 	},
 	{
@@ -39,6 +39,29 @@ const menu = [
 	{
 		name: 'Blog',
 		url: '/blog'
+	}
+]
+const imgs = [
+	{
+		name: 'pano',
+		slide: 'first',
+		url: 'v1623912238/pano_ygatwa.webp'
+	},
+	{
+		name: 'pano2',
+		url: 'v1623912238/pano2_cod7we.webp'
+	},
+	{
+		name: 'pano3',
+		url: 'v1623912238/pano3_umyftr.webp'
+	},
+	{
+		name: 'pano4',
+		url: 'v1623912245/pano4_js5tpp.webp'
+	},
+	{
+		name: 'pano5',
+		url: 'v1623912243/pano5_yqprop.webp'
 	}
 ]
 
@@ -92,6 +115,7 @@ app.get("/photos", (req, res) => {
 	// Variables
 	let data = {
 		title: "Photos",
+		imgs: imgs,
 		url: q.pathname,
 		menu: menu
 	}
