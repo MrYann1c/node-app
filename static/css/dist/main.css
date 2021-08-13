@@ -188,13 +188,13 @@ body {
 section {
   z-index: -10;
   padding: 0;
-  height: 80vh;
+  height: 100vh;
   color: black;
   scroll-behavior: smooth;
 }
 section:nth-of-type(1) {
   background-color: #111A23;
-  height: 80vh;
+  height: 100vh;
 }
 section:nth-of-type(2) {
   height: 100vh;
@@ -210,7 +210,13 @@ section:nth-of-type(4) {
 }
 
 #about {
-  height: 100vh;
+  height: 140vh;
+}
+
+.shape1 {
+  width: 5vw;
+  height: 5vh;
+  background-color: #FFBE53;
 }
 
 #photo-start {
@@ -254,9 +260,47 @@ section:nth-of-type(4) {
 .navigation-manual {
   position: absolute;
   display: flex;
-  margin-top: -50px;
+  margin-top: 27%;
   width: 1200px;
   justify-content: center;
+}
+
+.navigation-auto {
+  position: absolute;
+  display: flex;
+  width: 1200px;
+  margin-top: 27%;
+  justify-content: center;
+}
+
+.navigation-auto div {
+  border: 2px solid #FFBE53;
+  padding: 5px;
+  transition: 1s;
+}
+
+.navigation-auto div:not(:last-child) {
+  margin-right: 40px;
+}
+
+#radio1:checked ~ .navigation-auto .auto-btn1 {
+  background: #FFBE53;
+}
+
+#radio2:checked ~ .navigation-auto .auto-btn2 {
+  background: #FFBE53;
+}
+
+#radio3:checked ~ .navigation-auto .auto-btn3 {
+  background: #FFBE53;
+}
+
+#radio4:checked ~ .navigation-auto .auto-btn4 {
+  background: #FFBE53;
+}
+
+#radio5:checked ~ .navigation-auto .auto-btn5 {
+  background: #FFBE53;
 }
 
 .manual-btn {
@@ -462,7 +506,7 @@ section:nth-of-type(4) {
 
 .footer-container {
   width: 100%;
-  height: 100%;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -662,6 +706,10 @@ pre code {
   .navigation-manual {
     width: 768px;
   }
+
+  .navigation-auto {
+    width: 768px;
+  }
 }
 /* ----------- iPhone X ----------- */
 /* Portrait and Landscape */
@@ -679,6 +727,10 @@ pre code {
   .navigation-manual {
     width: 350px;
   }
+
+  .navigation-auto {
+    width: 350px;
+  }
 }
 /* Portrait */
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
@@ -693,6 +745,10 @@ pre code {
   }
 
   .navigation-manual {
+    width: 350px;
+  }
+
+  .navigation-auto {
     width: 350px;
   }
 }

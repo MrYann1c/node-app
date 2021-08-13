@@ -36,7 +36,7 @@ var menu = [{
   name: 'Home',
   url: '/'
 }, {
-  name: 'Photography',
+  name: 'Photos',
   url: '/photos'
 }, {
   name: 'Videos',

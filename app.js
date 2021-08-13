@@ -29,7 +29,7 @@ const menu = [
 		url: '/'
 	},
 	{
-		name: 'Photography',
+		name: 'Photos',
 		url: '/photos'
 	},
 	{

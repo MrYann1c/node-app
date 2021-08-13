@@ -62,3 +62,13 @@ window.onload = function () {
   }
 }
 
+let shapes = anime({
+    targets: '.shape1',
+    translateX: function() {
+      return anime.random(-10, 1400);
+        },
+    translateY: function() { 
+      return anime.random(10, 14) + 'rem'; 
+    },
+    loop: true
+});

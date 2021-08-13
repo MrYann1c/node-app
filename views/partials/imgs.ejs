@@ -1,6 +1,6 @@
 <div class="slider">
     <div class="slides">
-        <input type="radio" name="radio-btn" id="radio1">
+        <input type="radio" name="radio-btn" id="radio1" checked="checked">
         <input type="radio" name="radio-btn" id="radio2">
         <input type="radio" name="radio-btn" id="radio3">
         <input type="radio" name="radio-btn" id="radio4">
@@ -13,7 +13,7 @@
                 </div>
             <% } else { %> 
             <div class="slide">
-                <img src="https://res.cloudinary.com/dodxyoerw/image/upload/c_scale,q_100,w_1200/<%= imgs[i].url %>" alt="<%= imgs[i].name %>">
+                <img onmouseover="imgpreview()" src="https://res.cloudinary.com/dodxyoerw/image/upload/c_scale,q_100,w_1200/<%= imgs[i].url %>" alt="<%= imgs[i].name %>">
             </div>
             <% } %> 
         <% } %>

@@ -62,3 +62,14 @@ window.onload = function () {
     localStorage.setItem("hasCodeRunBefore", true);
   }
 };
+
+var shapes = anime({
+  targets: '.shape1',
+  translateX: function translateX() {
+    return anime.random(-10, 1400);
+  },
+  translateY: function translateY() {
+    return anime.random(10, 14) + 'rem';
+  },
+  loop: true
+});
