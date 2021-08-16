@@ -1,3 +1,7 @@
+<div class="blog-line"></div>
+<h1 class="photos-title"><%= panotitle %></h1>
+<p class="photos-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia aperiam, blanditiis iste fuga error eligendi quia quaerat labore quasi! Velit unde magnam laudantium debitis optio ipsa ducimus odio minus culpa?</p>
+<div class="img-hover"></div>
 <div class="slider">
     <div class="slides">
         <input type="radio" name="radio-btn" id="radio1" checked="checked">
@@ -9,11 +13,11 @@
         <% for ( let i in imgs ) { %>
             <% if (imgs[i].slide == 'first' )  { %> 
                 <div class="slide first">
-                    <img src="https://res.cloudinary.com/dodxyoerw/image/upload/c_scale,q_100,w_1200/<%= imgs[i].url %>" alt="<%= imgs[i].name %>">
+                    <img id="<%=imgs[i].name%>" onmouseenter="prev(this)" onmouseleave="hide(this)" onclick="Modal(this)" src="https://res.cloudinary.com/dodxyoerw/image/upload/<%= imgs[i].url %>" alt="<%= imgs[i].name %>">
                 </div>
             <% } else { %> 
             <div class="slide">
-                <img onmouseover="imgpreview()" src="https://res.cloudinary.com/dodxyoerw/image/upload/c_scale,q_100,w_1200/<%= imgs[i].url %>" alt="<%= imgs[i].name %>">
+                <img id="<%=imgs[i].name%>" onmouseover="prev(this)" onmouseleave="hide(this)" onclick="Modal(this)" src="https://res.cloudinary.com/dodxyoerw/image/upload/<%= imgs[i].url %>" alt="<%= imgs[i].name %>">
             </div>
             <% } %> 
         <% } %>

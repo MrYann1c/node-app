@@ -46,7 +46,7 @@ function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     mybutton.style.visibility = "visible";
     mybutton.style.opacity = "0.8";
-    mybutton.style.right = "30px";
+    mybutton.style.right = "20px";
   } else {
     mybutton.style.visibility = "hidden";
     mybutton.style.opacity = "0";

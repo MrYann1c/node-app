@@ -10,9 +10,12 @@
     <link rel="preload" as="image" type="image/webp" href="https://res.cloudinary.com/dodxyoerw/image/upload/c_scale,q_100,w_1200/v1623912245/pano5_yqprop.webp">
 </head>
 <body>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01">
+    </div>
 
-    <button onclick="topFunction()" class="topBtn" title="UP">TOP</button>
-    
     <%- include('../partials/nav'); %>
 
     <section id="photo-start">
@@ -27,12 +30,16 @@
         </div>
     </section>
     <section id="pano-sec">
-            <!-- <img class="slideImg" src="https://res.cloudinary.com/dodxyoerw/image/upload/c_scale,q_100,w_2500/v1623912238/pano_ygatwa.webp" alt="pano">
-            <img class="slideImg" src="https://res.cloudinary.com/dodxyoerw/image/upload/c_scale,q_100,w_2500/v1623912238/pano2_cod7we.webp" alt="pano2">
-            <img class="slideImg" src="https://res.cloudinary.com/dodxyoerw/image/upload/c_scale,q_100,w_2500/v1623912245/pano4_js5tpp.webp" alt="pano4">
-            <img class="slideImg" src="https://res.cloudinary.com/dodxyoerw/image/upload/c_scale,q_100,w_2500/v1623912243/pano5_yqprop.webp" alt="pano5">
-            <img class="slideImg" src="https://res.cloudinary.com/dodxyoerw/image/upload/c_scale,q_100,w_2500/v1623912238/pano3_umyftr.webp" alt="pano3"> -->
+       
+    <div>
+        <div>
             <%- include('../partials/imgs'); %> 
+        </div>
+        
+        <!-- <div style="float: none; margin-top: 100px;">
+        </div> -->
+    </div>
+
     </section>
 
     <%- include('../partials/footer'); %>
@@ -40,8 +47,9 @@
     <script>
         AOS.init();
       </script>
+          <button onclick="topFunction()" class="topBtn" title="UP">&#8679;</button>
 </body>
 <script src="js/main.js"></script>
-<script src="js/slider.js"></script>
+<script src="js/ani.js"></script>
 <script src="js/anime.min.js"></script>
 </html>

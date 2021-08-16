@@ -45,23 +45,23 @@ const imgs = [
 	{
 		name: 'pano',
 		slide: 'first',
-		url: 'v1623912238/pano_ygatwa.webp'
+		url: 'c_scale,q_100,w_1200/v1623912238/pano_ygatwa.webp'
 	},
 	{
 		name: 'pano2',
-		url: 'v1623912238/pano2_cod7we.webp'
+		url: 'c_scale,q_100,w_1200/v1623912238/pano2_cod7we.webp'
 	},
 	{
 		name: 'pano3',
-		url: 'v1623912238/pano3_umyftr.webp'
+		url: 'c_scale,q_100,w_1200/v1623912238/pano3_umyftr.webp'
 	},
 	{
 		name: 'pano4',
-		url: 'v1623912245/pano4_js5tpp.webp'
+		url: 'c_scale,q_100,w_1200/v1623912245/pano4_js5tpp.webp'
 	},
 	{
 		name: 'pano5',
-		url: 'v1623912243/pano5_yqprop.webp'
+		url: 'c_scale,q_100,w_1200/v1623912243/pano5_yqprop.webp'
 	}
 ]
 
@@ -117,7 +117,8 @@ app.get("/photos", (req, res) => {
 		title: "Photos",
 		imgs: imgs,
 		url: q.pathname,
-		menu: menu
+		menu: menu,
+		panotitle: "Panorama | Dji Mavic Air 2"
 	}
 
 	// Render Page
