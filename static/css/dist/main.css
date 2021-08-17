@@ -37,16 +37,6 @@ body {
   justify-content: center;
 }
 
-.fixed {
-  position: fixed;
-}
-
-@media screen and (max-width: 600px) {
-  .container {
-    top: 1.7em;
-    left: 1.7em;
-  }
-}
 .menu-icon {
   display: grid;
   place-items: center;
@@ -484,11 +474,12 @@ svg {
 }
 
 .about-text {
-  width: 30vw;
+  width: auto;
 }
 
 .about-text > p {
   color: white;
+  width: 40vw;
   font-size: 1.3vw;
 }
 
@@ -698,6 +689,12 @@ pre code {
   visibility: hidden;
 }
 
+@media screen and (max-width: 600px) {
+  .container {
+    top: 1.7em;
+    left: 1.7em;
+  }
+}
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   /* Styles */
@@ -714,7 +711,7 @@ pre code {
 
   .about-title {
     font-size: 8vw;
-    width: 50vw;
+    width: max-content;
   }
 
   .about-text > p {
@@ -758,7 +755,7 @@ pre code {
 /* iPads (portrait) ----------- */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   #about {
-    height: 120vh;
+    height: 130vh;
   }
 
   #pano-sec {
@@ -780,15 +777,16 @@ pre code {
 
   .about-title {
     font-size: 6vw;
-    width: 60vw;
+    width: max-content;
   }
 
   .about-text > p {
     font-size: 3.5vw;
+    width: 75vw;
   }
 
   .about-text {
-    width: 75vw;
+    width: auto;
   }
 
   .purpose {
@@ -834,13 +832,147 @@ iPad 3
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
   /* Styles */
 }
+@media only screen and (max-width: 1224px) {
+  .purpose {
+    float: none;
+  }
+
+  .about-text {
+    width: 65vw;
+  }
+}
 /* Desktops and laptops ----------- */
 @media only screen and (min-width: 1224px) {
-  /* Styles */
+  #about {
+    height: 115vh;
+  }
+
+  #pano-sec {
+    height: 100vh;
+  }
+
+  .topBtn {
+    padding: 10px;
+    font-size: 30px;
+  }
+
+  .main-title {
+    font-size: 6vw;
+  }
+
+  .about-container {
+    width: 50vw;
+  }
+
+  .about-title {
+    font-size: 3.1vw;
+    width: max-content;
+  }
+
+  .about-text > p {
+    font-size: 1.6vw;
+    width: 30vw;
+  }
+
+  .about-text {
+    width: auto;
+  }
+
+  .photos-title {
+    font-size: 2.5vw;
+  }
+
+  .photos-text {
+    width: 800px;
+    color: white;
+    font-size: 1.5vw;
+  }
+
+  .slider {
+    width: 800px;
+    height: auto;
+  }
+
+  .slide img {
+    width: 800px;
+    height: auto;
+  }
+
+  .navigation-manual {
+    width: 800px;
+    margin-top: 370px;
+  }
+
+  .navigation-auto {
+    width: 800px;
+    margin-top: 370px;
+  }
 }
 /* Large screens ----------- */
 @media only screen and (min-width: 1824px) {
-  /* Styles */
+  #about {
+    height: 125vh;
+  }
+
+  #pano-sec {
+    height: 100vh;
+  }
+
+  .topBtn {
+    padding: 20px;
+    font-size: 45px;
+  }
+
+  .main-title {
+    font-size: 5vw;
+  }
+
+  .about-container {
+    width: 50vw;
+  }
+
+  .about-title {
+    font-size: 2.8vw;
+    width: max-content;
+  }
+
+  .about-text > p {
+    font-size: 1.3vw;
+    width: 27vw;
+  }
+
+  .about-text {
+    width: auto;
+  }
+
+  .photos-title {
+    font-size: 2vw;
+  }
+
+  .photos-text {
+    width: 1200px;
+    font-size: 1.3vw;
+  }
+
+  .slider {
+    width: 1200px;
+    height: 500px;
+  }
+
+  .slide img {
+    width: 1200px;
+    height: 500px;
+  }
+
+  .navigation-manual {
+    width: 1200px;
+    margin-top: 520px;
+  }
+
+  .navigation-auto {
+    width: 1200px;
+    margin-top: 520px;
+  }
 }
 /* iPhone 4 ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
@@ -886,6 +1018,7 @@ iPad 3
   .topBtn {
     padding: 10px;
     font-size: 30px;
+    display: none;
   }
 
   .main-title {
@@ -898,15 +1031,16 @@ iPad 3
 
   .about-title {
     font-size: 8vw;
-    width: 50vw;
+    width: max-content;
   }
 
   .about-text > p {
     font-size: 4vw;
+    width: 80vw;
   }
 
   .about-text {
-    width: 65vw;
+    width: auto;
   }
 
   .purpose {
@@ -921,7 +1055,6 @@ iPad 3
     width: 350px;
     color: white;
     font-size: 3.5vw;
-    margin: 0 0 20px 0;
   }
 
   .slider {

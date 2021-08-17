@@ -1,52 +1,49 @@
 "use strict";
 
 // document.querySelector('.links').onclick = animation.play();
-window.onload = function () {
-  if (localStorage.getItem("hasCodeRunBefore") === null) {
-    var textWrapper = document.querySelector('.load-text');
-    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-    textWrapper.style.visibility = 'visible';
-    var loading = anime.timeline({
-      autoplay: true,
-      begin: function begin() {
-        document.querySelector('.loading').style.display = 'flex';
-      }
-    }).add({
-      targets: '.loading',
-      opacity: [0, 1],
-      easing: "easeInOutQuad",
-      duration: 1500,
-      delay: function delay(el, i) {
-        return 50 * (i + 1);
-      }
-    }).add({
-      display: 'block',
-      targets: '.load-text .letter',
-      opacity: [0, 1],
-      easing: "easeInOutQuad",
-      duration: 1500,
-      delay: function delay(el, i) {
-        return 50 * (i + 1);
-      }
-    }).add({
-      targets: '.load-text',
-      opacity: 0,
-      duration: 800,
-      easing: "easeOutExpo",
-      delay: 700
-    }).add({
-      targets: '.loading',
-      duration: 2000,
-      opacity: 0
-    }).add({
-      delay: 50,
-      begin: function begin() {
-        document.querySelector('.loading').style.display = 'none';
-      }
-    });
-    localStorage.setItem("hasCodeRunBefore", true);
-  }
-}; // let morph = anime({
+// window.onload = function () {
+//   if (localStorage.getItem("hasCodeRunBefore") === null) {
+//       var textWrapper = document.querySelector('.load-text');
+//       textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+//       textWrapper.style.visibility = 'visible';
+//       let loading = anime.timeline({
+//         autoplay: true,
+//         begin: function() {
+//           document.querySelector('.loading').style.display = 'flex';
+//         },
+//       }).add({
+//         targets: '.loading',
+//         opacity: [0,1],
+//         easing: "easeInOutQuad",
+//         duration: 1500,
+//         delay: (el, i) => 50 * (i+1)
+//       }).add({
+//         display: 'block',
+//         targets: '.load-text .letter',
+//         opacity: [0,1],
+//         easing: "easeInOutQuad",
+//         duration: 1500,
+//         delay: (el, i) => 50 * (i+1)
+//       }).add({
+//         targets: '.load-text',
+//         opacity: 0,
+//         duration: 800,
+//         easing: "easeOutExpo",
+//         delay: 700
+//       }).add ({
+//         targets: '.loading',
+//         duration: 2000,
+//         opacity: 0,
+//       }).add ({
+//         delay: 50,
+//         begin: function() {
+//           document.querySelector('.loading').style.display = 'none';
+//         },
+//       });
+//       localStorage.setItem("hasCodeRunBefore", true);
+//   }
+// }
+// let morph = anime({
 //     targets: '.svg',
 //     autoplay: true,
 //     points: [
@@ -72,8 +69,6 @@ window.onload = function () {
 //   loop: true,
 //   autoplay: true
 // });
-
-
 var topBtn = document.querySelector('.topBtn');
 
 function animateButton(rotation, duration) {
@@ -105,10 +100,9 @@ function prev(e) {
 
   anime({
     targets: pano,
-    opacity: 0.5,
-    scale: 1.2,
+    scale: 1.1,
     duration: 400,
-    easing: 'spring'
+    easing: 'easeInOutQuint'
   });
 }
 
@@ -119,43 +113,45 @@ function hide(e) {
     opacity: 1,
     scale: 1.0,
     duration: 400,
-    easing: 'spring'
+    easing: 'easeInOutQuint'
   });
 }
 
 function Modal(i) {
   // Get the modal
-  var modal = document.getElementById("myModal"); // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var modal = document.getElementById("myModal"); // Get the image and insert it inside the modal
 
   var img = i.id;
-  var modalImg = document.getElementById("img01"); // var captionText = document.getElementById("caption");
-
+  var modalImg = document.getElementById("img01");
   modal.style.display = "flex";
   src = i.src;
   var width = window.innerWidth > 0 ? window.innerWidth : screen.width;
-  alert(width);
-  var wimg = "1200";
+  var wimg = "1200"; // Desktop + Large Screens
 
-  if (width > 1920) {
+  if (width >= 1920) {
     finalsrc = src.replace(wimg, "1920");
     wimg = "1920";
-    alert("THIS IS DESK" + wimg);
-  }
+  } // iPad / iPad Pro
+
+
+  if (width == 768) {
+    finalsrc = src.replace(wimg, "768");
+    wimg = "768";
+  } // iPhone X
+
 
   if (width == 375) {
     finalsrc = src.replace(wimg, "375");
     wimg = "375";
-    alert("THIS IS X" + wimg);
+  } // Retina
+
+
+  if (width == 1366) {
+    finalsrc = src.replace(wimg, "1366");
+    wimg = "1366";
   }
 
-  if (width > 375 && width < 1920) {
-    finalsrc = src.replace(wimg, "1200");
-    wimg = "1200";
-    alert("THIS IS SMOLL" + wimg);
-  }
-
-  modalImg.src = finalsrc; // captionText.innerHTML = i.alt;
-
+  modalImg.src = finalsrc;
   anime({
     targets: modal,
     easing: 'linear',
@@ -164,10 +160,7 @@ function Modal(i) {
     begin: function begin() {
       modal.style.display = 'flex';
     },
-    opacity: [0, 1] // scale: [0,1],
-    // borderRadius: 0
-    // width: '100%',
-
+    opacity: [0, 1]
   }); // Get the <span> element that closes the modal
 
   var span = document.getElementsByClassName("close")[0]; // When the user clicks on <span> (x), close the modal
