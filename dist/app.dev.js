@@ -1,36 +1,63 @@
 "use strict";
 
 // -- Node/ExpressJS Application File --
-// Variables
+// Variables / Requirements
 var compression = require('compression');
 
 var fs = require('fs');
 
-var http = require('http');
+var _require = require('express'),
+    request = _require.request;
 
-var https = require('https');
+var http = require('http');
 
 var express = require('express');
 
-var bp = require('body-parser');
+var bodyParser = require('body-parser');
 
 var port = 80;
 var app = express();
 
-var blog = require('./blog.js');
+var blog = require('./blog.js'); // Login
 
-var _require = require('express'),
-    request = _require.request; // Certificate
-// const privateKey = fs.readFileSync('/home/yannic/certs/privkey.pem', 'utf8');
-// const certificate = fs.readFileSync('/home/yannic/certs/cert.pem', 'utf8');
-// const ca = fs.readFileSync('/home/yannic/certs/chain.pem', 'utf8');
-// const credentials = {
-// 	key: privateKey,
-// 	cert: certificate,
-// 	ca: ca
-// };
-// Array Variables
 
+var flash = require('express-flash');
+
+var expressValidator = require('express-validator');
+
+var cookieParser = require('cookie-parser');
+
+var session = require('express-session');
+
+var mysql = require('mysql');
+
+var path = require('path');
+
+app.use(cookieParser()); // Connect to MySQL
+
+var connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'Docliadoc01!',
+  database: 'nodelogin'
+});
+connection.connect(function (error) {
+  if (!!error) {
+    console.log(error);
+  } else {
+    console.log('Connected!:)');
+  }
+});
+module.exports = connection;
+app.use(session({
+  secret: '1234',
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 60000
+  }
+}));
+app.use(flash()); // Array Variables
 
 var menu = [{
   name: 'Home',
@@ -63,79 +90,101 @@ var imgs = [{
   url: 'c_scale,q_100,w_1200/v1623912243/pano5_yqprop.webp'
 }]; // Application parameters
 
-app.use(bp.urlencoded({
-  extended: false
+app.use(bodyParser.urlencoded({
+  extended: true
 }));
-app.use(bp.json());
+app.use(bodyParser.json());
 app.use(require('morgan')('dev'));
-app.use(compression()); // Integrate different controller (Blog page)
+app.use(compression());
+app.use('/blog', blog); // Integrate different controller (Blog page)
 
-app.use('/blog', blog); // Set view engine to EJS to render EJS templates
+app.set('view engine', 'ejs'); // Set view engine to EJS to render EJS templates
 
-app.set('view engine', 'ejs'); // Set /static as default path
+app.use(express["static"](__dirname + "/static")); // Set /static as default path
+// ------------- LOGIN Procedure -------------
 
-app.use(express["static"](__dirname + "/static")); // Pages | Routes
+app.get("/login", function (req, res) {
+  res.type('text/html');
+  res.render('pages/login', {
+    title: 'Login',
+    username: '',
+    password: ''
+  });
+});
+app.get('/logout', function (req, res) {
+  req.session.destroy();
+  res.redirect('/');
+});
+app.post('/auth', function (req, res, next) {
+  var username = req.body.username;
+  var password = req.body.password;
+  connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function (err, rows, fields) {
+    if (err) throw err; // if user not found
+
+    if (rows.length <= 0) {
+      req.flash('error', 'Incorrect!');
+      res.redirect('/login');
+    } else {
+      // if user found
+      req.session.loggedin = true;
+      req.session.uid = username;
+      res.redirect('/');
+    }
+  });
+}); // Pages | Routes
+//////////////////////////////////////////////////////////////
 // -- Homepage --
 
 app.get("/", function (req, res) {
-  // Get url (relative Path)
   var urls = require('url');
 
   var adr = req.protocol + '://' + req.get('host') + req.originalUrl;
-  var q = urls.parse(adr, true); // Headers
-
-  res.type('text/html'); // Variables sent to page
-
+  var q = urls.parse(adr, true);
+  res.type('text/html');
   var data = {
     title: "Home",
     url: q.pathname,
-    menu: menu
-  }; // Render Page
-
+    menu: menu,
+    uid: req.session.uid
+  };
   res.render('pages/index', data);
-}); // -- Photos Page --
+}); //////////////////////////////////////////////////////////////
+// -- Photos Page --
 
 app.get("/photos", function (req, res) {
-  // Get url (relative Path)
   var urls = require('url');
 
   var adr = req.protocol + '://' + req.get('host') + req.originalUrl;
-  var q = urls.parse(adr, true); // Headers
-
-  res.type('text/html'); // Variables
-
+  var q = urls.parse(adr, true);
+  res.type('text/html');
   var data = {
     title: "Photos",
     imgs: imgs,
     url: q.pathname,
     menu: menu,
-    panotitle: "Panorama | Dji Mavic Air 2"
-  }; // Render Page
-
+    panotitle: "Panorama | Dji Mavic Air 2",
+    uid: req.session.uid
+  };
   res.render('pages/photos', data);
-}); // -- Videos Page --
+}); //////////////////////////////////////////////////////////////
+// -- Videos Page --
 
 app.get("/videos", function (req, res) {
   // Get url (relative Path)
   var urls = require('url');
 
   var adr = req.protocol + '://' + req.get('host') + req.originalUrl;
-  var q = urls.parse(adr, true); // Headers
-
-  res.type('text/html'); // Variables
-
+  var q = urls.parse(adr, true);
+  res.type('text/html');
   var data = {
     title: "Videos",
     url: q.pathname,
     menu: menu
-  }; // Render Page
-
+  };
   res.render('pages/videos', data);
-});
-var httpServer = http.createServer(app); // const httpsServer = https.createServer(credentials, app);
+}); //////////////////////////////////////////////////////////////
 
+var httpServer = http.createServer(app);
 httpServer.listen(3000, function () {
   console.log('HTTP Server running on port 3000');
-}); // httpsServer.listen(3001, () => {
-// 	console.log('HTTPS Server running on port 3001');
-// });
+});

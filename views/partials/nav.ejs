@@ -14,3 +14,13 @@
     <% } %>
     
 </div>
+<% if (uid) { %>
+    <div class="uid">
+        <p><%= uid %></p>
+        <a href="/logout" class="login-btn">Logout</a>
+
+    </div>
+<% } else { %>
+    <a href="/login" class="login-btn">Login</a>
+<% } %>
+
